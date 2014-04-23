@@ -1,0 +1,28 @@
+oracle:
+  connection_string: # set in settings.local.yml
+
+redis:
+  url: "redis://localhost:6379/0"
+
+schedule:
+  hour: 5
+
+# See http://rdoc.info/github/mikel/mail/Mail#defaults-class_method
+email:
+  delivery_method: test
+  options: {}
+
+exception_notification:
+  options:
+    email_prefix: "[banner-syncinator] "
+    sender_address: "no-reply@biola.edu"
+    exception_recipients:
+      - appdev@biola.edu
+
+trogdir:
+  scheme: http
+  host: localhost:3000
+  script_name:
+  version: v1
+  access_id: # set in settings.local.yml
+  secret_key: # set in settings.local.yml
