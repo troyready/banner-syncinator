@@ -26,7 +26,6 @@ module Trogdir
       country:              :country,
       university_email:     -> (person) { person[:emails].find{|e| e[:type] == 'university'}.try :[], :address },
       personal_email:       -> (person) { person[:emails].find{|e| e[:type] == 'personal'}.try :[], :address },
-      # TODO: phones
 
       # Employee specific
       pay_type:       :pay_type,

@@ -20,7 +20,6 @@ module Banner
         country:          :NATION,
         university_email: :EMAIL,
         personal_email:   :EMAIL_PER
-        # TODO: phones
       }
 
       def self.collection

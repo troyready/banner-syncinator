@@ -90,12 +90,15 @@ module BannerSyncinator
     end
 
     def change_phone!(type, attribute)
+      phone_id = old_person.send("#{attribute}_id")
+      number = new_person.send(attribute)
+
       if new? attribute
-        # TODO
+        phone_api :create, type: type, number: number, primary: true
       elsif removed? attribute
-        # TODO
+        phone_api :destroy, phone_id: phone_id
       elsif changed? attribute
-        # TODO
+        phone_api :update, phone_id: phone_id, number: number
       end
     end
 
