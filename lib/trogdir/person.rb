@@ -2,7 +2,7 @@ module Trogdir
   class Person < BannerSyncinator::Person
     ATTRS = superclass::ATTRS + [
       :uuid, :affiliations,
-      :banner_id_id, :biola_id_id, :address_id, :university_email_id, :personal_email_id
+      :banner_id_id, :biola_id_id, :address_id, :university_email_id, :personal_email_id, :office_phone_id, :home_phone_id
     ]
 
     FIELD_MAPPINGS = {
@@ -42,6 +42,7 @@ module Trogdir
       address_id:           -> (person) { person[:addresses].find{|id| id[:type] == 'home'}.try :[], :id },
       university_email_id:  -> (person) { person[:emails].find{|e| e[:type] == 'university'}.try :[], :id },
       personal_email_id:    -> (person) { person[:emails].find{|e| e[:type] == 'personal'}.try :[], :id },
+      office_phone_id:      -> (person) { person[:phones].find{|p| p[:type] == 'office'} .try :[], :id }
     }
 
     attr_accessor *ATTRS
