@@ -3,12 +3,15 @@ module BannerSyncinator
   def self.initialize!
     require 'rails_config'
     require 'sidekiq'
+    require 'oj'
     require 'mail'
     require 'trogdir_api_client'
 
     env = ENV['RACK_ENV'] || ENV['RAILS_ENV'] || :development
 
     RailsConfig.load_and_set_settings('./config/settings.yml', "./config/settings.#{env}.yml", './config/settings.local.yml')
+
+    MultiJson.use :oj
 
     ActiveSupport::Inflector.inflections do |inflect|
      inflect.irregular 'alumnus', 'alumnus'

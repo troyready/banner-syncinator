@@ -4,6 +4,7 @@ gem 'actionpack', '~> 3.2' # apparently needed by exception_notification
 gem 'blazing'
 gem 'biola_deploy'
 gem 'mail'
+gem 'oj'
 gem 'rails_config'
 gem 'rake'
 gem 'ruby-oci8'
