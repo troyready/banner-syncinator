@@ -11,7 +11,7 @@ module Banner
         gender:           -> (row) { {'M' => :male, 'F' => :female}[row['GENDER']] },
         partial_ssn:      :SSN,
         birth_date:       -> (row) { Date.strptime(row['DOB'], '%m/%d/%Y') unless row['DOB'].blank? },
-        privacy:          :CONFID,
+        privacy:          -> (row) { row['CONFID'] == 'Y' },
         street_1:         :STREET1,
         street_2:         :STREET2,
         city:             :CITY,

@@ -7,34 +7,25 @@ module Trogdir
 
     FIELD_MAPPINGS = {
       uuid:                 :uuid,
-      banner_id:            -> (person) { person[:ids].find{|id| id[:type] == 'banner'}.try :[], :identifier },
+      banner_id:            -> (person) { person[:ids].find{|id| id[:type] == 'banner'}.try(:[], :identifier).try :to_i },
       biola_id:             -> (person) { person[:ids].find{|id| id[:type] == 'biola_id'}.try :[], :identifier },
       last_name:            :last_name,
       first_name:           :first_name,
       middle_name:          :middle_name,
       preferred_name:       :preferred_name,
-      gender:               :gender,
+      gender:               -> (person) { person[:gender].to_sym if person[:gender] },
       partial_ssn:          :partial_ssn,
-      birth_date:           :birth_date,
+      birth_date:           -> (person) { Date.parse(person[:birth_date]) if person[:birth_date] },
       privacy:              :privacy,
       affiliations:         :affiliations,
-      street_1:             :street_1,
-      street_2:             :street_2,
-      city:                 :city,
-      state:                :state,
-      zip:                  :zip,
-      country:              :country,
+      street_1:             -> (person) { person[:addresses].find{|ad| ad[:type] == 'home'}.try :[], :street_1 },
+      street_2:             -> (person) { person[:addresses].find{|ad| ad[:type] == 'home'}.try :[], :street_2 },
+      city:                 -> (person) { person[:addresses].find{|ad| ad[:type] == 'home'}.try :[], :city },
+      state:                -> (person) { person[:addresses].find{|ad| ad[:type] == 'home'}.try :[], :state },
+      zip:                  -> (person) { person[:addresses].find{|ad| ad[:type] == 'home'}.try :[], :zip },
+      country:              -> (person) { person[:addresses].find{|ad| ad[:type] == 'home'}.try :[], :country },
       university_email:     -> (person) { person[:emails].find{|e| e[:type] == 'university'}.try :[], :address },
       personal_email:       -> (person) { person[:emails].find{|e| e[:type] == 'personal'}.try :[], :address },
-
-      # Employee specific
-      pay_type:       :pay_type,
-      full_time:      :full_time,
-      employee_type:  :employee_type,
-      department:     :department,
-      title:          :title,
-      job_type:       :job_type,
-      office_phone:   -> (person) { person[:phones].find{|e| e[:type] == 'office'}.try :[], :number },
 
       # IDs needed to do updates and destroys against the Trogdir API
       banner_id_id:         -> (person) { person[:ids].find{|id| id[:type] == 'banner'}.try :[], :id },
@@ -42,7 +33,6 @@ module Trogdir
       address_id:           -> (person) { person[:addresses].find{|id| id[:type] == 'home'}.try :[], :id },
       university_email_id:  -> (person) { person[:emails].find{|e| e[:type] == 'university'}.try :[], :id },
       personal_email_id:    -> (person) { person[:emails].find{|e| e[:type] == 'personal'}.try :[], :id },
-      office_phone_id:      -> (person) { person[:phones].find{|p| p[:type] == 'office'} .try :[], :id }
     }
 
     attr_accessor *ATTRS

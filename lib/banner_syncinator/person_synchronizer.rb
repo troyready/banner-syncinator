@@ -24,7 +24,9 @@ module BannerSyncinator
 
       # TODO: this should be alt office phone instead of home phone
       {office: :office_phone, home: :home_phone}.each do |type, att|
-        change_phone! type, att
+        if old_person.respond_to?(att) && new_person.respond_to?(att)
+          change_phone! type, att
+        end
       end
     end
 

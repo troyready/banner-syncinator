@@ -6,8 +6,7 @@ module BannerSyncinator
       :last_name, :first_name, :middle_name, :preferred_name,
       :gender, :partial_ssn, :birth_date, :privacy,
       :street_1, :street_2, :city, :state, :zip, :country,
-      :university_email, :personal_email,
-      :pay_type, :full_time, :employee_type, :department, :title, :job_type, :office_phone, :home_phone
+      :university_email, :personal_email
     ]
 
     attr_accessor *ATTRS

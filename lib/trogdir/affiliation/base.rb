@@ -1,6 +1,8 @@
 module Trogdir
   module Affiliation
     class Base
+      FIELD_MAPPINGS = Trogdir::Person::FIELD_MAPPINGS
+
       def self.collection
         affiliation = self.to_s.demodulize.underscore
 
