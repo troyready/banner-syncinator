@@ -1,5 +1,5 @@
 module Trogdir
-  class API
+  class Client
     def self.call(method, params = nil)
       client = Trogdir::APIClient::People.new
       request = client.send method, params

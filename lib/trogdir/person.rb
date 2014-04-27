@@ -51,7 +51,7 @@ module Trogdir
     end
 
     def self.find(banner_id)
-      person_hash = Trogdir::API.call :by_id, id: banner_id, type: :banner
+      person_hash = Trogdir::Client.call :by_id, id: banner_id, type: :banner
 
       # TODO: not sure if this will really be blank on 404
       if person_hash.blank?
@@ -64,7 +64,7 @@ module Trogdir
     def self.collection
       affiliation = self.to_s.demodulize.underscore
 
-      person_hashes = Trogdir::API.call :index, affiliation: affiliation
+      person_hashes = Trogdir::Client.call :index, affiliation: affiliation
       people = person_hashes.map { |h| Person.import(h) }
 
       Trogdir::PersonCollection.new people
