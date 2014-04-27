@@ -53,8 +53,8 @@ module BannerSyncinator
     require './lib/banner_syncinator/person_writer'
     require './lib/banner_syncinator/people_synchronizer'
     require './lib/banner_syncinator/worker'
-    require './lib/banner'
-    require './lib/trogdir'
+    require './lib/banner_syncinator/banner'
+    require './lib/banner_syncinator/trogdir'
 
     true
   end
