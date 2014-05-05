@@ -9,12 +9,14 @@ module BannerSyncinator
       :university_email, :personal_email
     ]
 
-    attr_accessor *ATTRS
-
-    def initialize(attrs)
-      self.class::ATTRS.each do |att|
-        send "#{att}=", attrs[att]
+    ATTRS.each do |attr|
+      define_method(attr) do
+        raw_attributes[attr]
       end
+    end
+
+    def initialize(raw_attributes)
+      @raw_attributes = raw_attributes
     end
 
     def self.import
@@ -47,6 +49,18 @@ module BannerSyncinator
 
     def to_s
       "#{first_name} #{last_name}"
+    end
+
+    protected
+
+    attr_reader :raw_attributes
+
+    def self.default_readers(attribute_mappings)
+      attribute_mappings.each do |common_attr, raw_attr|
+        define_method(common_attr) do
+          raw_attributes[raw_attr.to_s]
+        end
+      end
     end
   end
 end

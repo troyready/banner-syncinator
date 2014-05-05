@@ -39,7 +39,7 @@ module Trogdir
 
     # Convert attributes from Trogdir API to Person attributes
     def self.import(hash_from_trogdir)
-      attributes = FIELD_MAPPINGS.each_with_object({}) do |(att, json_att), atts|
+      attributes = self::FIELD_MAPPINGS.each_with_object({}) do |(att, json_att), atts|
         if json_att.respond_to? :call
           atts[att] = json_att.call(hash_from_trogdir)
         else
@@ -50,8 +50,9 @@ module Trogdir
       self.new(attributes)
     end
 
-    def self.find(banner_id)
-      person_hash = Trogdir::Client.call :by_id, id: banner_id, type: :banner
+    def self.find(biola_id)
+      biola_id = biola_id.to_s.rjust(8, '0')
+      person_hash = Trogdir::Client.call :by_id, id: biola_id, type: :biola_id
 
       # TODO: not sure if this will really be blank on 404
       if person_hash.blank?

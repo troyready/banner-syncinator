@@ -9,7 +9,7 @@ module BannerSyncinator
 
     def added
       @added ||= (new_collection - old_collection).map do |new_person|
-        old_person = Trogdir::Person.find(new_person.banner_id)
+        old_person = Trogdir::Person.find(new_person.biola_id)
 
         PersonChange.new(old_person, new_person)
       end
