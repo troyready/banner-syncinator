@@ -42,9 +42,12 @@ module BannerSyncinator
     end
 
     def ==(other)
-      return false unless other.is_a? self.class
+      return false unless other.is_a? Person
 
-      self.class::ATTRS.all? { |att| other.send(att) == send(att) }
+      # attributes that are common between the two
+      attrs = self.class::ATTRS & other.class::ATTRS
+
+      attrs.all? { |att| other.send(att) == send(att) }
     end
 
     def to_s
@@ -58,7 +61,7 @@ module BannerSyncinator
     def self.default_readers(attribute_mappings)
       attribute_mappings.each do |common_attr, raw_attr|
         define_method(common_attr) do
-          raw_attributes[raw_attr.to_s]
+          raw_attributes[raw_attr]
         end
       end
     end

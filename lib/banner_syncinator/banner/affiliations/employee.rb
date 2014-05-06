@@ -22,12 +22,12 @@ module Banner
     })
 
     def full_time
-      raw_attributes['FT_PT'] == 'F'
+      raw_attributes[:FT_PT] == 'F'
     end
 
     def employee_type
-      payid = raw_attributes['PAYID']
-      ft_pt = raw_attributes['FT_PT']
+      payid = raw_attributes[:PAYID]
+      ft_pt = raw_attributes[:FT_PT]
 
       TYPE_MAP[payid] || TYPE_MAP[ft_pt] || "Unknown (#{ft_pt})"
     end

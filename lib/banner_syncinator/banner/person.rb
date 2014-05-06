@@ -2,7 +2,6 @@ module Banner
   class Person < BannerSyncinator::Person
     default_readers({
       banner_id:        :PIDM,
-      biola_id:         :ID,
       last_name:        :LNAME,
       first_name:       :FNAME,
       middle_name:      :MNAME,
@@ -18,8 +17,12 @@ module Banner
       personal_email:   :EMAIL_PER
     })
 
+    def biola_id
+      raw_attributes[:ID].to_i
+    end
+
     def gender
-      case raw_attributes['GENDER']
+      case raw_attributes[:GENDER]
       when 'M'
         :male
       when 'F'
@@ -28,12 +31,12 @@ module Banner
     end
 
     def birth_date
-      dob = raw_attributes['DOB']
+      dob = raw_attributes[:DOB]
       Date.strptime(dob, '%m/%d/%Y') unless dob.blank?
     end
 
     def privacy
-      raw_attributes['CONFID'] == 'Y'
+      raw_attributes[:CONFID] == 'Y'
     end
 
     def self.find(biola_id)

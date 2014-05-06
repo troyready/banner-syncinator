@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Banner::Person do
   let(:params) { {} }
-  subject { Banner::Person.new(params.stringify_keys) }
+  subject { Banner::Person.new(params) }
 
   describe '#banner_id' do
     let(:params) { {PIDM: 42} }

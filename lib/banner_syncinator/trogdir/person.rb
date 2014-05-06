@@ -2,63 +2,83 @@ module Trogdir
   class Person < BannerSyncinator::Person
     ATTRS = superclass::ATTRS + [
       :uuid, :affiliations,
-      :banner_id_id, :biola_id_id, :address_id, :university_email_id, :personal_email_id, :office_phone_id, :home_phone_id
+      # IDs needed to do updates and destroys against the Trogdir API
+      :banner_id_id, :biola_id_id, :address_id, :university_email_id, :personal_email_id
     ]
 
-    FIELD_MAPPINGS = {
+    default_readers({
       uuid:                 :uuid,
-      banner_id:            -> (person) { person[:ids].find{|id| id[:type] == 'banner'}.try(:[], :identifier).try :to_i },
-      biola_id:             -> (person) { person[:ids].find{|id| id[:type] == 'biola_id'}.try :[], :identifier },
       last_name:            :last_name,
       first_name:           :first_name,
       middle_name:          :middle_name,
       preferred_name:       :preferred_name,
-      gender:               -> (person) { person[:gender].to_sym if person[:gender] },
       partial_ssn:          :partial_ssn,
-      birth_date:           -> (person) { Date.parse(person[:birth_date]) if person[:birth_date] },
-      privacy:              :privacy,
-      affiliations:         :affiliations,
-      street_1:             -> (person) { person[:addresses].find{|ad| ad[:type] == 'home'}.try :[], :street_1 },
-      street_2:             -> (person) { person[:addresses].find{|ad| ad[:type] == 'home'}.try :[], :street_2 },
-      city:                 -> (person) { person[:addresses].find{|ad| ad[:type] == 'home'}.try :[], :city },
-      state:                -> (person) { person[:addresses].find{|ad| ad[:type] == 'home'}.try :[], :state },
-      zip:                  -> (person) { person[:addresses].find{|ad| ad[:type] == 'home'}.try :[], :zip },
-      country:              -> (person) { person[:addresses].find{|ad| ad[:type] == 'home'}.try :[], :country },
-      university_email:     -> (person) { person[:emails].find{|e| e[:type] == 'university'}.try :[], :address },
-      personal_email:       -> (person) { person[:emails].find{|e| e[:type] == 'personal'}.try :[], :address },
+      affiliations:         :affiliations
+    })
 
-      # IDs needed to do updates and destroys against the Trogdir API
-      banner_id_id:         -> (person) { person[:ids].find{|id| id[:type] == 'banner'}.try :[], :id },
-      biola_id_id:          -> (person) { person[:ids].find{|id| id[:type] == 'biola_id'}.try :[], :id },
-      address_id:           -> (person) { person[:addresses].find{|id| id[:type] == 'home'}.try :[], :id },
-      university_email_id:  -> (person) { person[:emails].find{|e| e[:type] == 'university'}.try :[], :id },
-      personal_email_id:    -> (person) { person[:emails].find{|e| e[:type] == 'personal'}.try :[], :id },
-    }
+    def banner_id
+      find(:ids, :banner)[:identifier].try :to_i
+    end
 
-    attr_accessor *ATTRS
+    def biola_id
+      find(:ids, :biola_id)[:identifier].try :to_i
+    end
 
-    # Convert attributes from Trogdir API to Person attributes
-    def self.import(hash_from_trogdir)
-      attributes = self::FIELD_MAPPINGS.each_with_object({}) do |(att, json_att), atts|
-        if json_att.respond_to? :call
-          atts[att] = json_att.call(hash_from_trogdir)
-        else
-          atts[att] = hash_from_trogdir[json_att]
-        end
+    def gender
+      raw_attributes[:gender].to_sym if raw_attributes[:gender]
+    end
+
+    def birth_date
+      dob = raw_attributes[:birth_date]
+      Date.strptime(dob, '%Y-%m-%d') unless dob.blank?
+    end
+
+    def privacy
+      raw_attributes[:privacy] == true
+    end
+
+    [:street_1, :street_2, :city, :state, :zip, :country].each do |att|
+      define_method(att) do
+        home_address[att]
       end
+    end
 
-      self.new(attributes)
+    def university_email
+      find(:emails, :university)[:address]
+    end
+
+    def personal_email
+      find(:emails, :personal)[:address]
+    end
+
+    def banner_id_id
+      find(:ids, :banner)[:id]
+    end
+
+    def biola_id_id
+      find(:ids, :biola_id)[:id]
+    end
+
+    def address_id
+      home_address[:id]
+    end
+
+    def university_email_id
+      find(:emails, :university)[:id]
+    end
+
+    def personal_email_id
+      find(:emails, :personal)[:id]
     end
 
     def self.find(biola_id)
       biola_id = biola_id.to_s.rjust(8, '0')
       person_hash = Trogdir::Client.call :by_id, id: biola_id, type: :biola_id
 
-      # TODO: not sure if this will really be blank on 404
       if person_hash.blank?
         BannerSyncinator::NullPerson.new
       else
-        import(person_hash)
+        new(person_hash)
       end
     end
 
@@ -66,9 +86,21 @@ module Trogdir
       affiliation = self.to_s.demodulize.underscore
 
       person_hashes = Trogdir::Client.call :index, affiliation: affiliation
-      people = person_hashes.map { |h| Person.import(h) }
+      people = person_hashes.map { |h| new(h) }
 
       Trogdir::PersonCollection.new people
+    end
+
+    private
+
+    def find(things, type)
+      raw_attributes[things].find do |thing|
+        thing[:type] == type.to_s
+      end || {}
+    end
+
+    def home_address
+      @home_address ||= find(:addresses, :home)
     end
   end
 end

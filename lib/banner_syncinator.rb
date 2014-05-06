@@ -5,6 +5,7 @@ module BannerSyncinator
     require 'sidekiq'
     require 'oj'
     require 'mail'
+    require 'active_support/core_ext'
     require 'trogdir_api_client'
 
     env = ENV['RACK_ENV'] || ENV['RAILS_ENV'] || :development
@@ -30,7 +31,6 @@ module BannerSyncinator
     end
 
     if defined? ::ExceptionNotifier
-      require 'active_support/core_ext'
       require 'exception_notification/sidekiq'
       ExceptionNotifier.register_exception_notifier(:email, Settings.exception_notification.options.to_hash)
     end

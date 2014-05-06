@@ -12,7 +12,7 @@ module Banner
       cursor = conn.exec(sql, *params)
 
       while row = cursor.fetch_hash
-        block.call(row) if block_given?
+        block.call(row.symbolize_keys) if block_given?
       end
 
       cursor.close

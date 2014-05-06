@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Banner::Employee do
   let(:params) { {} }
-  subject { Banner::Employee.new(params.stringify_keys) }
+  subject { Banner::Employee.new(params) }
 
   describe '#pay_type' do
     let(:params) { {PAYID: '02'} }
