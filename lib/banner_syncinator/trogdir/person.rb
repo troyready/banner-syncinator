@@ -72,7 +72,6 @@ module Trogdir
     end
 
     def self.find(biola_id)
-      biola_id = biola_id.to_s.rjust(8, '0')
       person_hash = Trogdir::Client.call :by_id, id: biola_id, type: :biola_id
 
       if person_hash.blank?
