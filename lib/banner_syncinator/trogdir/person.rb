@@ -2,6 +2,10 @@ module Trogdir
   class Person < BannerSyncinator::Person
     ATTRS = superclass::ATTRS + [
       :uuid, :affiliations,
+
+      # Things everyone has in Trogdir but not Banner
+      :partial_ssn, :birth_date,
+
       # IDs needed to do updates and destroys against the Trogdir API
       :banner_id_id, :biola_id_id, :address_id, :university_email_id, :personal_email_id
     ]
