@@ -19,12 +19,14 @@ module BannerSyncinator
       change_address!
 
       {university: :university_email, personal: :personal_email}.each do |type, att|
-        change_email! type, att
+        if both_respond_to? att
+          change_email! type, att
+        end
       end
 
       # TODO: this should be alt office phone instead of home phone
       {office: :office_phone, home: :home_phone}.each do |type, att|
-        if old_person.respond_to?(att) && new_person.respond_to?(att)
+        if both_respond_to? att
           change_phone! type, att
         end
       end
@@ -142,6 +144,10 @@ module BannerSyncinator
     def removed?(*attributes)
       attributes.flatten!
       old_attrs.slice(*attributes).values.any?(&:present?) && new_attrs.slice(*attributes).values.all?(&:blank?)
+    end
+
+    def both_respond_to?(attribute)
+      old_person.respond_to?(attribute) && new_person.respond_to?(attribute)
     end
   end
 end
