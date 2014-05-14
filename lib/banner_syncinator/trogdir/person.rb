@@ -97,7 +97,7 @@ module Trogdir
     private
 
     def find(things, type)
-      raw_attributes[things].find do |thing|
+      Array(raw_attributes[things]).find do |thing|
         thing[:type] == type.to_s
       end || {}
     end

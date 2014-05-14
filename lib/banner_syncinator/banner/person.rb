@@ -18,7 +18,7 @@ module Banner
     })
 
     def biola_id
-      raw_attributes[:ID].to_i
+      raw_attributes[:ID].try :to_i
     end
 
     def gender
