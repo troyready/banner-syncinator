@@ -1,12 +1,13 @@
 module BannerSyncinator
   class Person
     # TODO: we may be able to ignore university_email since it should be handled by something other than Banner
+    # Attributes that are common to all types of people
     ATTRS = [
       :banner_id, :biola_id,
       :last_name, :first_name, :middle_name, :preferred_name,
       :gender, :privacy,
-      :street_1, :street_2, :city, :state, :zip, :country,
-      :university_email, :personal_email
+      :street_1, :street_2, :city, :state, :zip,
+      :university_email
     ]
 
     ATTRS.each do |attr|

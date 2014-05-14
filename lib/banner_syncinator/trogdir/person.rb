@@ -4,7 +4,7 @@ module Trogdir
       :uuid, :affiliations,
 
       # Things everyone has in Trogdir but not Banner
-      :partial_ssn, :birth_date,
+      :partial_ssn, :birth_date, :country, :personal_email,
 
       # IDs needed to do updates and destroys against the Trogdir API
       :banner_id_id, :biola_id_id, :address_id, :university_email_id, :personal_email_id
