@@ -128,22 +128,25 @@ module BannerSyncinator
     end
 
     def old_attrs
-      @old_attrs ||= old_person.attributes.slice(common_attrs)
+      @old_attrs ||= old_person.attributes.slice(*common_attrs)
     end
 
     def new_attrs
-      @new_attrs ||= new_person.attributes.slice(common_attrs)
+      @new_attrs ||= new_person.attributes.slice(*common_attrs)
     end
 
     def new?(*attributes)
+      attributes.flatten!
       old_attrs.slice(*attributes).values.all?(&:blank?) && new_attrs.slice(*attributes).values.any?(&:present?)
     end
 
     def changed?(*attributes)
+      attributes.flatten!
       old_attrs.slice(*attributes) != new_attrs.slice(*attributes)
     end
 
     def removed?(*attributes)
+      attributes.flatten!
       old_attrs.slice(*attributes).values.any?(&:present?) && new_attrs.slice(*attributes).values.all?(&:blank?)
     end
 
