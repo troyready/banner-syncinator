@@ -48,7 +48,7 @@ module Banner
 
       Banner::PersonCollection.new.tap do |collection|
         DB.exec(sql) do |row|
-          collection << self.class.new(row)
+          collection << self.new(row)
         end
       end
     end
