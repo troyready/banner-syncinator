@@ -6,15 +6,12 @@ module Banner
       first_name:       :FNAME,
       middle_name:      :MNAME,
       preferred_name:   :PNAME,
-      partial_ssn:      :SSN,
       street_1:         :STREET1,
       street_2:         :STREET2,
       city:             :CITY,
       state:            :STATE,
       zip:              :ZIP,
-      country:          :NATION,
-      university_email: :EMAIL,
-      personal_email:   :EMAIL_PER
+      university_email: :EMAIL
     })
 
     def biola_id
@@ -28,11 +25,6 @@ module Banner
       when 'F'
         :female
       end
-    end
-
-    def birth_date
-      dob = raw_attributes[:DOB]
-      Date.strptime(dob, '%m/%d/%Y') unless dob.blank?
     end
 
     def privacy
@@ -56,7 +48,7 @@ module Banner
 
       Banner::PersonCollection.new.tap do |collection|
         DB.exec(sql) do |row|
-          collection << Person.new(row)
+          collection << self.class.new(row)
         end
       end
     end

@@ -34,11 +34,6 @@ describe Banner::Person do
     its(:preferred_name) { should eql 'Coachie' }
   end
 
-  describe '#partial_ssn' do
-    let(:params) { {SSN: '123-12-1234'} }
-    its(:partial_ssn) { should eql '123-12-1234' }
-  end
-
   describe '#street_1' do
     let(:params) { {STREET1: '1 Field St.'} }
     its(:street_1) { should eql '1 Field St.' }
@@ -64,19 +59,9 @@ describe Banner::Person do
     its(:zip) { should eql '12345' }
   end
 
-  describe '#country' do
-    let(:params) { {NATION: 'USA'} }
-    its(:country) { should eql 'USA' }
-  end
-
   describe '#university_email' do
     let(:params) { {EMAIL: 'coach.z@example.com'} }
     its(:university_email) { should eql 'coach.z@example.com' }
-  end
-
-  describe '#personal_email' do
-    let(:params) { {EMAIL_PER: 'dacoach@example.com'} }
-    its(:personal_email) { should eql 'dacoach@example.com' }
   end
 
   describe '#gender' do
@@ -93,18 +78,6 @@ describe Banner::Person do
     context "when nil" do
       let(:params) { {GENDER: nil} }
       its(:gender) { should eql nil }
-    end
-  end
-
-  describe '#birth_date' do
-    context 'when a date' do
-      let(:params) { {DOB: '01/01/1970'} }
-      its(:birth_date) { should eql Date.new(1970, 1, 1) }
-    end
-
-    context 'when nil' do
-      let(:params) { {DOB: nil} }
-      its(:birth_date) { should eql nil }
     end
   end
 
