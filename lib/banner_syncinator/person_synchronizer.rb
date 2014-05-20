@@ -123,26 +123,27 @@ module BannerSyncinator
       new_attrs.slice(*PERSON_ATTRS).merge(affiliations: affiliations)
     end
 
+    def common_attrs
+      @common_attrs ||= old_person.attributes.keys & new_person.attributes.keys
+    end
+
     def old_attrs
-      @old_attrs ||= old_person.attributes
+      @old_attrs ||= old_person.attributes.slice(common_attrs)
     end
 
     def new_attrs
-      @new_attrs ||= new_person.attributes
+      @new_attrs ||= new_person.attributes.slice(common_attrs)
     end
 
     def new?(*attributes)
-      attributes.flatten!
       old_attrs.slice(*attributes).values.all?(&:blank?) && new_attrs.slice(*attributes).values.any?(&:present?)
     end
 
     def changed?(*attributes)
-      attributes.flatten!
       old_attrs.slice(*attributes) != new_attrs.slice(*attributes)
     end
 
     def removed?(*attributes)
-      attributes.flatten!
       old_attrs.slice(*attributes).values.any?(&:present?) && new_attrs.slice(*attributes).values.all?(&:blank?)
     end
 
