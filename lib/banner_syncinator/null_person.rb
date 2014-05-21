@@ -19,10 +19,6 @@ module BannerSyncinator
       0.hash
     end
 
-    def to_s
-      ''
-    end
-
     def method_missing(*args, &block)
       nil
     end
