@@ -12,16 +12,12 @@ module BannerSyncinator
 
     ATTRS.each do |attr|
       define_method(attr) do
-        raw_attributes[attr]
+        raise NotImplementedError, "##{attr} should be overridden in sub classes"
       end
     end
 
     def initialize(raw_attributes)
       @raw_attributes = raw_attributes
-    end
-
-    def self.import
-      raise NotImplemented, '#import should be overridden is sub classes'
     end
 
     def attributes
@@ -53,6 +49,10 @@ module BannerSyncinator
 
     def to_s
       "#{first_name} #{last_name}"
+    end
+
+    def self.collection
+      raise NotImplementedError, '#collection should be overridden in sub classes'
     end
 
     protected

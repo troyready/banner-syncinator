@@ -8,7 +8,7 @@ Bundler.setup :default, :test
 require 'rspec'
 # require 'webmock/rspec'
 # require 'factory_girl'
-# require 'faker'
+require 'faker'
 # require 'trogdir_api'
 require 'pry'
 

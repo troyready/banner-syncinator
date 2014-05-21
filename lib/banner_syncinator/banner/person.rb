@@ -44,6 +44,7 @@ module Banner
     end
 
     def self.collection
+      raise NotImplementedError, 'self::SQL_ALL must be defined' unless defined? self::SQL_ALL
       sql = self::SQL_ALL
 
       Banner::PersonCollection.new.tap do |collection|

@@ -10,7 +10,7 @@ describe BannerSyncinator::NullPerson do
   its('attributes') { should have_key :first_name }
 
   [:is?, :eql?, :==].each do |method|
-    describe '#is?' do
+    describe "##{method}" do
       subject { BannerSyncinator::NullPerson.new.send(method, other) }
 
       context 'when comparing some other object' do
