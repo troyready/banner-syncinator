@@ -7,14 +7,17 @@ module Banner
 
       base.default_readers({
         partial_ssn:    :SSN,
-        country:        :NATION,
-        personal_email: :EMAIL_PERS
+        country:        :NATION
       })
     end
 
     def birth_date
       dob = raw_attributes[:DOB]
       Date.strptime(dob, '%m/%d/%Y') unless dob.blank?
+    end
+
+    def personal_email
+      raw_attributes[:EMAIL_PERS].try :strip
     end
   end
 end

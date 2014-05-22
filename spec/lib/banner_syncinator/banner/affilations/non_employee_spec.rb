@@ -33,9 +33,17 @@ describe Banner::NonEmployee do
     end
 
     describe '#personal_email' do
-      let(:params) { {EMAIL_PERS: 'johnny.doe@example.com'} }
-      its(:personal_email) { should eql 'johnny.doe@example.com' }
-      it{ expect(non_employee.attributes[:personal_email]).to eql 'johnny.doe@example.com' }
+      context 'valid email' do
+        let(:params) { {EMAIL_PERS: 'johnny.doe@example.com'} }
+        its(:personal_email) { should eql 'johnny.doe@example.com' }
+        it{ expect(non_employee.attributes[:personal_email]).to eql 'johnny.doe@example.com' }
+      end
+
+      context 'email with extra leading/trailing spaces' do
+        let(:params) { {EMAIL_PERS: ' johnny.doe@example.com '} }
+        its(:personal_email) { should eql 'johnny.doe@example.com' }
+        it{ expect(non_employee.attributes[:personal_email]).to eql 'johnny.doe@example.com' }
+      end
     end
   end
 end
