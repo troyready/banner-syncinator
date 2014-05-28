@@ -9,4 +9,5 @@ module Banner
   require './lib/banner_syncinator/banner/affiliations/faculty'
   require './lib/banner_syncinator/banner/affiliations/student'
   require './lib/banner_syncinator/banner/affiliations/trustee'
+  require './lib/banner_syncinator/banner/affiliations/volunteer'
 end

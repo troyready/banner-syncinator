@@ -1,6 +1,6 @@
 module Banner
   class Employee < Banner::Person
-    SQL_ALL = "SELECT * FROM bpv_current_employees WHERE id NOT LIKE 'X%' AND id NOT LIKE 'Z%'"
+    SQL_ALL = "SELECT * FROM bpv_current_employees WHERE ecls NOT IN(52) AND id NOT LIKE 'X%' AND id NOT LIKE 'Z%'"
     SQL_ONE = "SELECT * FROM bpv_current_employees WHERE id = :1"
 
     ATTRS = superclass::ATTRS + [:pay_type, :department, :title, :job_type, :office_phone, :full_time, :employee_type]
@@ -13,7 +13,6 @@ module Banner
       office_phone:   :DIR_EXT
 
       # TODO: Not sure what to do with the commented out columns below
-      #ecls:          :ECLS, # TODO: use to determine student_worker or employee, etc
       #employee_type:  :EMP_TYPE, # not used (I think)
       #org:           :ORG,
       #job_ct:        :JOB_CT,
