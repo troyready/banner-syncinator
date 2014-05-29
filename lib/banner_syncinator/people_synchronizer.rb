@@ -15,11 +15,11 @@ module BannerSyncinator
     private
 
     def trogdir_people
-      @trogdir_people ||= Trogdir::PersonCollection.all_for(affiliation)
+      @trogdir_people ||= affiliation.trogdir_person.collection
     end
 
     def banner_people
-      @banner_people ||= Banner::PersonCollection.all_for(affiliation)
+      @banner_people ||= affiliation.banner_person.collection
     end
 
     def comparer

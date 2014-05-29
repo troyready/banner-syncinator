@@ -47,7 +47,7 @@ module Banner
       raise NotImplementedError, 'self::SQL_ALL must be defined' unless defined? self::SQL_ALL
       sql = self::SQL_ALL
 
-      Banner::PersonCollection.new.tap do |collection|
+      BannerSyncinator::PersonCollection.new.tap do |collection|
         DB.exec(sql) do |row|
           collection << self.new(row)
         end

@@ -91,7 +91,7 @@ module Trogdir
       person_hashes = Trogdir::Client.call :index, affiliation: affiliation
       people = person_hashes.map { |h| new(h) }
 
-      Trogdir::PersonCollection.new people
+      BannerSyncinator::PersonCollection.new people
     end
 
     private
