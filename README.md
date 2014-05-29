@@ -1,4 +1,4 @@
-Banner Syncinator
+Banner Syncinator [![Build Status](https://travis-ci.org/biola/banner-syncinator.svg)](https://travis-ci.org/biola/banner-syncinator)
 =================
 
 Banner Views
