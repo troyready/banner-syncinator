@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-[Banner::Employee, Banner::Volunteer].each do |klass|
+[Banner::Employee, Banner::Volunteer, Banner::StudentWorker].each do |klass|
   describe klass do
     let(:params) { {} }
     let(:employee) { klass.new(params) }

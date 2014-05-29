@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-[Trogdir::Employee, Trogdir::Volunteer].each do |klass|
+[Trogdir::Employee, Trogdir::Volunteer, Trogdir::StudentWorker].each do |klass|
   describe klass do
     let(:params) { {} }
     subject { klass.new(params) }

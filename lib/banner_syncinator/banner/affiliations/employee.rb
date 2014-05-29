@@ -1,7 +1,7 @@
 module Banner
   class Employee < Banner::Person
-    SQL_ALL = "SELECT * FROM bpv_current_employees WHERE ecls NOT IN(51,52) AND id NOT LIKE 'X%' AND id NOT LIKE 'Z%'"
-    SQL_ONE = "SELECT * FROM bpv_current_employees WHERE id = :1"
+    SQL_ALL = "SELECT * FROM bpv_current_employees WHERE ecls NOT IN(30,31,33,51,52) AND id NOT LIKE 'X%' AND id NOT LIKE 'Z%'"
+    SQL_ONE = "SELECT * FROM bpv_current_employees WHERE ecls NOT IN(30,31,33,51,52) AND id = :1"
 
     ATTRS = superclass::ATTRS + [:pay_type, :department, :title, :job_type, :office_phone, :full_time, :employee_type]
 

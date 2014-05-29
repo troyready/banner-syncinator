@@ -7,6 +7,7 @@ module Trogdir
   require './lib/banner_syncinator/trogdir/affiliations/employee'
   require './lib/banner_syncinator/trogdir/affiliations/faculty'
   require './lib/banner_syncinator/trogdir/affiliations/student'
+  require './lib/banner_syncinator/trogdir/affiliations/student_worker'
   require './lib/banner_syncinator/trogdir/affiliations/trustee'
   require './lib/banner_syncinator/trogdir/affiliations/volunteer'
 end
