@@ -50,7 +50,6 @@ module BannerSyncinator
     require './lib/banner_syncinator/person_collection'
     require './lib/banner_syncinator/person_collection_comparer'
     require './lib/banner_syncinator/person_synchronizer'
-    require './lib/banner_syncinator/person_writer'
     require './lib/banner_syncinator/people_synchronizer'
     require './lib/banner_syncinator/worker'
     require './lib/banner_syncinator/banner'
