@@ -54,6 +54,7 @@ module BannerSyncinator
     require './lib/banner_syncinator/worker'
     require './lib/banner_syncinator/banner'
     require './lib/banner_syncinator/trogdir'
+    require './lib/banner_syncinator/affiliation'
 
     true
   end

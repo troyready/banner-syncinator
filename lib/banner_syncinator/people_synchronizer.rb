@@ -3,7 +3,7 @@ module BannerSyncinator
     attr_reader :affiliation
 
     def initialize(affiliation)
-      @affiliation = affiliation
+      @affiliation = Affiliation.find(affiliation)
     end
 
     def sync!

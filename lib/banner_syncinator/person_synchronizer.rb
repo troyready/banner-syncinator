@@ -50,7 +50,7 @@ module BannerSyncinator
 
         @uuid = hash[:uuid]
       elsif removed? PERSON_ATTRS
-        affiliations = old_person.affiliations.map(&:to_s) - [affiliation.to_s]
+        affiliations = old_person.affiliations.map(&:to_s) - [affiliation.name]
         person_api :update, affiliations: affiliations
       elsif changed? PERSON_ATTRS
         person_api :update, person_attributes

@@ -77,5 +77,13 @@ describe BannerSyncinator::Person do
     its(:to_s) { should eql 'Trogdor Burninator' }
   end
 
-  it { expect { BannerSyncinator::Person.collection }.to raise_exception NotImplementedError }
+  describe '.collection' do
+    it { expect { BannerSyncinator::Person.collection }.to raise_exception NotImplementedError }
+  end
+
+  describe '.affiliation' do
+    subject { Banner::StudentWorker.affiliation }
+    its(:class) { should eql BannerSyncinator::Affiliation }
+    its(:name) { should eql 'student worker' }
+  end
 end

@@ -52,7 +52,20 @@ module BannerSyncinator
     end
 
     def self.collection
-      raise NotImplementedError, '#collection should be overridden in sub classes'
+      raise NotImplementedError, '.collection should be overridden in sub classes'
+    end
+
+    def self.affiliation
+      class_name = self.to_s.demodulize
+
+      if class_name == 'Person'
+        raise NotImplementedError, '.affiliation should be overridden in sub classes'
+      end
+
+      slug = class_name.underscore
+      name = slug.humanize.downcase
+
+      Affiliation.new(slug, name)
     end
 
     protected
