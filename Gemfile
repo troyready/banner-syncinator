@@ -7,10 +7,13 @@ gem 'mail'
 gem 'oj'
 gem 'rails_config'
 gem 'rake'
-gem 'ruby-oci8'
 gem 'sidekiq'
 gem 'sidetiq'
 gem 'trogdir_api_client'
+
+group :development, :staging, :production do
+  gem 'ruby-oci8'
+end
 
 group :development, :test do
   gem 'pry'

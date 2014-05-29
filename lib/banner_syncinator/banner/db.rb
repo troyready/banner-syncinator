@@ -1,4 +1,5 @@
-require 'oci8'
+# Don't require explicitly because there's no ruby-oci8 in test
+autoload :OCI8, 'oci8'
 
 module Banner
   class DB
