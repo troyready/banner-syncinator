@@ -1,6 +1,22 @@
 require 'spec_helper'
 
 describe BannerSyncinator::NullPerson do
+  describe '.new' do
+    let(:args) { [] }
+    subject { BannerSyncinator::NullPerson.new(*args) }
+
+    context 'without default mimick arg' do
+      its('attributes.keys') { should eql BannerSyncinator::Person::ATTRS }
+      it { should_not respond_to :department }
+    end
+
+    context 'with Banner::Employee mimick arg' do
+      let(:args) { [Banner::Employee] }
+      its('attributes.keys') { should eql Banner::Employee::ATTRS }
+      it { should respond_to :department }
+    end
+  end
+
   its(:present?) { should be_false }
   its(:blank?) { should be_true }
   its(:to_ary) { should eql [] }

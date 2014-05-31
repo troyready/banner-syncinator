@@ -79,7 +79,7 @@ module Trogdir
       person_hash = Trogdir::Client.call :by_id, id: biola_id, type: :biola_id
 
       if person_hash.blank?
-        BannerSyncinator::NullPerson.new
+        BannerSyncinator::NullPerson.new(self)
       else
         new(person_hash)
       end

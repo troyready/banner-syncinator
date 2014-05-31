@@ -5,8 +5,13 @@ module BannerSyncinator
     def to_ary() [] end
     def to_s() '' end
 
+    def initialize(mimick = Person)
+      mimick = mimick.class unless mimick.class == Class
+      @mimick = mimick
+    end
+
     def attributes
-      Hash[Person::ATTRS.map { |att| [att, nil] }]
+      Hash[mimick::ATTRS.map { |att| [att, nil] }]
     end
 
     def is?(other)
@@ -19,8 +24,16 @@ module BannerSyncinator
       0.hash
     end
 
+    def respond_to?(method)
+      attributes.has_key?(method.to_sym) || super
+    end
+
     def method_missing(*args, &block)
       nil
     end
+
+    private
+
+    attr_reader :mimick
   end
 end

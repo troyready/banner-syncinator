@@ -27,7 +27,7 @@ module BannerSyncinator
 
     def removed
       @removed ||= (old_collection - new_collection).map do |person|
-        PersonChange.new(person, NullPerson.new)
+        PersonChange.new(person, NullPerson.new(person))
       end
     end
 

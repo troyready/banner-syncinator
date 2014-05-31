@@ -40,7 +40,7 @@ module Banner
         person = new(row)
       end
 
-      person || BannerSyncinator::NullPerson.new
+      person || BannerSyncinator::NullPerson.new(self)
     end
 
     def self.collection
