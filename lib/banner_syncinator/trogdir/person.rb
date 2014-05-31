@@ -86,9 +86,7 @@ module Trogdir
     end
 
     def self.collection
-      affiliation = self.to_s.demodulize.underscore
-
-      person_hashes = Trogdir::Client.call :index, affiliation: affiliation
+      person_hashes = Trogdir::Client.call :index, affiliation: affiliation.name
       people = person_hashes.map { |h| new(h) }
 
       BannerSyncinator::PersonCollection.new people
