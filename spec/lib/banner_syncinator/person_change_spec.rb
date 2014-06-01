@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe BannerSyncinator::PersonChange do
+describe PersonChange do
   let(:old_attrs) { {} }
   let(:new_attrs) { {} }
   let(:old_person) { Trogdir::Person.new(old_attrs) }
   let(:new_person) { Banner::Person.new(new_attrs) }
-  let(:person_change) { BannerSyncinator::PersonChange.new(old_person, new_person) }
+  let(:person_change) { PersonChange.new(old_person, new_person) }
   subject { person_change }
 
   describe '#diff' do

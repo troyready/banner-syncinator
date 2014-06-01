@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe BannerSyncinator::NullPerson do
+describe NullPerson do
   describe '.new' do
     let(:args) { [] }
-    subject { BannerSyncinator::NullPerson.new(*args) }
+    subject { NullPerson.new(*args) }
 
     context 'without default mimick arg' do
-      its('attributes.keys') { should eql BannerSyncinator::Person::ATTRS }
+      its('attributes.keys') { should eql ::Person::ATTRS }
       it { should_not respond_to :department }
     end
 
@@ -27,7 +27,7 @@ describe BannerSyncinator::NullPerson do
 
   [:is?, :eql?, :==].each do |method|
     describe "##{method}" do
-      subject { BannerSyncinator::NullPerson.new.send(method, other) }
+      subject { NullPerson.new.send(method, other) }
 
       context 'when comparing some other object' do
         let(:other) { Object.new }
@@ -35,14 +35,14 @@ describe BannerSyncinator::NullPerson do
       end
 
       context 'when comparing another NullPerson' do
-        let(:other) { BannerSyncinator::NullPerson.new }
+        let(:other) { NullPerson.new }
         it { should be_true }
       end
     end
   end
 
   describe '#method_missing' do
-    subject { BannerSyncinator::NullPerson.new.whatever }
+    subject { NullPerson.new.whatever }
     it { should be_nil }
   end
 

@@ -1,5 +1,5 @@
 module Banner
-  class Person < BannerSyncinator::Person
+  class Person < ::Person
     default_readers({
       banner_id:        :PIDM,
       last_name:        :LNAME,
@@ -40,14 +40,14 @@ module Banner
         person = new(row)
       end
 
-      person || BannerSyncinator::NullPerson.new(self)
+      person || NullPerson.new(self)
     end
 
     def self.collection
       raise NotImplementedError, 'self::SQL_ALL must be defined' unless defined? self::SQL_ALL
       sql = self::SQL_ALL
 
-      BannerSyncinator::PersonCollection.new.tap do |collection|
+      PersonCollection.new.tap do |collection|
         DB.exec(sql) do |row|
           collection << self.new(row)
         end

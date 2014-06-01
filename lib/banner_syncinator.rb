@@ -44,17 +44,17 @@ module BannerSyncinator
       config.secret_key = Settings.trogdir.secret_key
     end
 
-    require './lib/banner_syncinator/null_person'
-    require './lib/banner_syncinator/person'
-    require './lib/banner_syncinator/person_change'
-    require './lib/banner_syncinator/person_collection'
-    require './lib/banner_syncinator/person_collection_comparer'
-    require './lib/banner_syncinator/person_synchronizer'
-    require './lib/banner_syncinator/people_synchronizer'
+    require './lib/null_person'
+    require './lib/person'
+    require './lib/person_change'
+    require './lib/person_collection'
+    require './lib/person_collection_comparer'
+    require './lib/person_synchronizer'
+    require './lib/people_synchronizer'
+    require './lib/banner'
+    require './lib/trogdir'
+    require './lib/affiliation'
     require './lib/banner_syncinator/worker'
-    require './lib/banner_syncinator/banner'
-    require './lib/banner_syncinator/trogdir'
-    require './lib/banner_syncinator/affiliation'
 
     true
   end

@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe BannerSyncinator::Affiliation do
+describe Affiliation do
   let(:attrs) { [nil, nil] }
-  let(:affilation) { BannerSyncinator::Affiliation.new(*attrs) }
+  let(:affilation) { Affiliation.new(*attrs) }
 
   subject { affilation }
 
@@ -27,7 +27,7 @@ describe BannerSyncinator::Affiliation do
   end
 
   describe '.find' do
-    subject { BannerSyncinator::Affiliation.find(affiliation_finder) }
+    subject { Affiliation.find(affiliation_finder) }
 
     context 'with an invalid affiliation' do
       let(:affiliation_finder) { 'blah' }

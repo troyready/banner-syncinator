@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe BannerSyncinator::Person do
-  attrs = BannerSyncinator::Person::ATTRS
+describe ::Person do
+  attrs = ::Person::ATTRS
   let(:raw_attributes) { {} }
-  let(:person) { BannerSyncinator::Person.new(raw_attributes) }
-  let(:other_person) { BannerSyncinator::Person.new({}) }
+  let(:person) { ::Person.new(raw_attributes) }
+  let(:other_person) { ::Person.new({}) }
   subject { person }
 
   attrs.each do |attribute|
@@ -78,12 +78,12 @@ describe BannerSyncinator::Person do
   end
 
   describe '.collection' do
-    it { expect { BannerSyncinator::Person.collection }.to raise_exception NotImplementedError }
+    it { expect { ::Person.collection }.to raise_exception NotImplementedError }
   end
 
   describe '.affiliation' do
     subject { Banner::StudentWorker.affiliation }
-    its(:class) { should eql BannerSyncinator::Affiliation }
+    its(:class) { should eql Affiliation }
     its(:name) { should eql 'student worker' }
   end
 end

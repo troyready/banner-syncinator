@@ -1,5 +1,5 @@
 module Trogdir
-  class Person < BannerSyncinator::Person
+  class Person < ::Person
     ATTRS = superclass::ATTRS + [
       :uuid, :affiliations,
 
@@ -79,7 +79,7 @@ module Trogdir
       person_hash = Trogdir::Client.call :by_id, id: biola_id, type: :biola_id
 
       if person_hash.blank?
-        BannerSyncinator::NullPerson.new(self)
+        NullPerson.new(self)
       else
         new(person_hash)
       end
@@ -89,7 +89,7 @@ module Trogdir
       person_hashes = Trogdir::Client.call :index, affiliation: affiliation.name
       people = person_hashes.map { |h| new(h) }
 
-      BannerSyncinator::PersonCollection.new people
+      PersonCollection.new people
     end
 
     private
