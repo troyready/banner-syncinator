@@ -13,6 +13,10 @@ class NullPerson
     Hash[mimick::ATTRS.map { |att| [att, nil] }]
   end
 
+  def affiliations
+    []
+  end
+
   def is?(other)
     other.class == self.class
   end

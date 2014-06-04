@@ -44,14 +44,16 @@ class PersonSynchronizer
   attr_reader :uuid
 
   def change_person!
+    old_affiliations = old_person.affiliations.map(&:to_s)
+
     if new? PERSON_ATTRS
       hash = person_api :create, person_attributes
 
       @uuid = hash[:uuid]
     elsif removed? PERSON_ATTRS
-      affiliations = old_person.affiliations.map(&:to_s) - [affiliation.name]
+      affiliations = old_affiliations - [affiliation.name]
       person_api :update, affiliations: affiliations
-    elsif changed? PERSON_ATTRS
+    elsif changed?(PERSON_ATTRS) || old_affiliations.exclude?(affiliation.name)
       person_api :update, person_attributes
     end
   end
