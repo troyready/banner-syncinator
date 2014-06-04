@@ -27,6 +27,6 @@ class PeopleSynchronizer
   end
 
   def comparer
-    @comparer ||= PersonCollectionComparer.new(trogdir_people, banner_people)
+    @comparer ||= PersonCollectionComparer.new(trogdir_people, banner_people, affiliation)
   end
 end
