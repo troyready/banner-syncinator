@@ -107,11 +107,23 @@ class PersonSynchronizer
 
   # person_api, id_api, address_api, email_api and phone_api methods
   %w{People IDs Addresses Emails Phones}.each do |klass|
-    define_method("#{klass.singularize.downcase}_api") do |method, attributes|
+    klass_name = klass.singularize.downcase
+
+    define_method("#{klass_name}_api") do |method, attributes|
       attributes.merge!(uuid: uuid) unless klass == 'Person' && method == :create
 
       response = "Trogdir::APIClient::#{klass}".constantize.new.send(method, attributes).perform
-      JSON.parse(response.body, symbolize_names: true)
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      method_name = method.to_s.titleize
+      id = json[:id] || json[:uuid] || attributes[:id] || attributes[:uuid]
+      if response.successful?
+        Log.info "#{method_name} #{klass_name} #{id} with #{attributes}"
+      else
+        Log.error "Error on #{method_name} #{klass_name} #{id}: #{json}"
+      end
+
+      json
     end
   end
 

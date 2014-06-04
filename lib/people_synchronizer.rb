@@ -6,9 +6,14 @@ class PeopleSynchronizer
   end
 
   def sync!
+    Log.info "Begin sync of #{affiliation.to_s.pluralize}"
+
     comparer.changed.each do |person_change|
       PersonSynchronizer.new(person_change, affiliation).call
     end
+
+    count = comparer.changed.count
+    Log.info "Finished syncing #{count} #{affiliation.to_s.pluralize(count)}"
   end
 
   private

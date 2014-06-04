@@ -1,5 +1,4 @@
 module BannerSyncinator
-
   def self.initialize!
     require 'rails_config'
     require 'sidekiq'
@@ -44,6 +43,7 @@ module BannerSyncinator
       config.secret_key = Settings.trogdir.secret_key
     end
 
+    require './lib/log'
     require './lib/null_person'
     require './lib/person'
     require './lib/person_change'
