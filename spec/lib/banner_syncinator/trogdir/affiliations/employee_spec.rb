@@ -20,11 +20,6 @@ require 'spec_helper'
       its(:title) { should eql 'Burninator' }
     end
 
-    describe '#job_type' do
-      let(:params) { {job_type: 'Just a Dragon'} }
-      its(:job_type) { should eql 'Just a Dragon' }
-    end
-
     describe '#office_phone' do
       let(:params) { {phones: [{type: 'office', number: '123-123-1234'}]} }
       its(:office_phone) { should eql '123-123-1234' }

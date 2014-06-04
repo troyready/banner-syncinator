@@ -24,12 +24,6 @@ require 'spec_helper'
       it { expect(employee.attributes[:title]).to eql 'Burninator' }
     end
 
-    describe '#job_type' do
-      let(:params) { {JOB_TYPE: 'Just a Dragon'} }
-      its(:job_type) { should eql 'Just a Dragon' }
-      it { expect(employee.attributes[:job_type]).to eql 'Just a Dragon' }
-    end
-
     describe '#office_phone' do
       let(:params) { {DIR_EXT: '123-123-1234'} }
       its(:office_phone) { should eql '123-123-1234' }

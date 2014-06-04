@@ -3,19 +3,19 @@ module Banner
     SQL_ALL = "SELECT * FROM bpv_current_employees WHERE ecls NOT IN(30,31,33,51,52) AND id NOT LIKE 'X%' AND id NOT LIKE 'Z%'"
     SQL_ONE = "SELECT * FROM bpv_current_employees WHERE ecls NOT IN(30,31,33,51,52) AND id = :1"
 
-    ATTRS = superclass::ATTRS + [:pay_type, :department, :title, :job_type, :office_phone, :full_time, :employee_type]
+    ATTRS = superclass::ATTRS + [:pay_type, :department, :title, :office_phone, :full_time, :employee_type]
 
     default_readers({
       pay_type:       :PAYID,
       department:     :ORG_DESC,
       title:          :TITLE,
-      job_type:       :JOB_TYPE,
       office_phone:   :DIR_EXT
 
       # TODO: Not sure what to do with the commented out columns below
-      #employee_type:  :EMP_TYPE, # not used (I think)
+      #employee_type: :EMP_TYPE, # not used (I think)
       #org:           :ORG,
       #job_ct:        :JOB_CT,
+      #job_type:      :JOB_TYPE,
       #fac_type:      :FAC_TYPE,
       #alt_ext:       :ALT_EXT # TODO: create new "alternate office phone" or something type
     })
