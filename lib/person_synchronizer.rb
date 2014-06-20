@@ -9,24 +9,26 @@ class PersonSynchronizer
   end
 
   def call
-    change_person!
+    action = change_person!
 
-    {banner: :banner_id, biola_id: :biola_id}.each do |type, att|
-      change_id! type, att
-    end
-
-    change_address!
-
-    {university: :university_email, personal: :personal_email}.each do |type, att|
-      if both_respond_to? att
-        change_email! type, att
+    unless action == :destroy
+      {banner: :banner_id, biola_id: :biola_id}.each do |type, att|
+        change_id! type, att
       end
-    end
 
-    # TODO: this should be alt office phone instead of home phone
-    {office: :office_phone, home: :home_phone}.each do |type, att|
-      if both_respond_to? att
-        change_phone! type, att
+      change_address!
+
+      {university: :university_email, personal: :personal_email}.each do |type, att|
+        if both_respond_to? att
+          change_email! type, att
+        end
+      end
+
+      # TODO: this should be alt office phone instead of home phone
+      {office: :office_phone, home: :home_phone}.each do |type, att|
+        if both_respond_to? att
+          change_phone! type, att
+        end
       end
     end
   end
@@ -50,11 +52,14 @@ class PersonSynchronizer
       hash = person_api :create, person_attributes
 
       @uuid = hash[:uuid]
+      :create
     elsif removed? PERSON_ATTRS
       affiliations = old_affiliations - [affiliation.name]
       person_api :update, affiliations: affiliations
+      :destroy
     elsif changed?(PERSON_ATTRS) || old_affiliations.exclude?(affiliation.name)
       person_api :update, person_attributes
+      :update
     end
   end
 
@@ -64,20 +69,26 @@ class PersonSynchronizer
 
     if new? attribute
       id_api :create, type: type, identifier: identifier
+      :create
     elsif removed? attribute
       id_api :destroy, id_id: id_id
+      :destroy
     elsif changed? attribute
       id_api :update, id_id: id_id, identifier: identifier
+      :update
     end
   end
 
   def change_address!
     if new? ADDRESS_ATTRS
       address_api :create, new_attrs.slice(*ADDRESS_ATTRS).merge(type: :home)
+      :create
     elsif removed? ADDRESS_ATTRS
       address_api :destroy, address_id: old_person.address_id
+      :destroy
     elsif changed? ADDRESS_ATTRS
       address_api :update, new_attrs.slice(*ADDRESS_ATTRS).merge(address_id: old_person.address_id)
+      :update
     end
   end
 
@@ -87,10 +98,13 @@ class PersonSynchronizer
 
     if new? attribute
       email_api :create, type: type, address: address, primary: true
+      :create
     elsif removed? attribute
       email_api :destroy, email_id: email_id
+      :destroy
     elsif changed? attribute
       email_api :update, email_id: email_id, address: address
+      :update
     end
   end
 
@@ -100,10 +114,13 @@ class PersonSynchronizer
 
     if new? attribute
       phone_api :create, type: type, number: number, primary: true
+      :create
     elsif removed? attribute
       phone_api :destroy, phone_id: phone_id
+      :destroy
     elsif changed? attribute
       phone_api :update, phone_id: phone_id, number: number
+      :update
     end
   end
 
