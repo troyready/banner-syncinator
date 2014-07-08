@@ -10,6 +10,7 @@ gem 'rake'
 gem 'sidekiq'
 gem 'sidetiq'
 gem 'trogdir_api_client'
+gem 'weary', github: 'biola/weary', branch: 'preserve_empty_params'
 
 group :development, :staging, :production do
   gem 'ruby-oci8'

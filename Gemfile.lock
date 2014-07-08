@@ -1,3 +1,15 @@
+GIT
+  remote: git://github.com/biola/weary.git
+  revision: b24886e4af9554118697c8e96dfe72cb166c3e97
+  branch: preserve_empty_params
+  specs:
+    weary (1.1.3)
+      addressable (~> 2.3)
+      multi_json (~> 1.7)
+      promise (~> 0.3.0)
+      rack (>= 1.4.5, < 2.0)
+      simple_oauth (~> 0.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -102,7 +114,7 @@ GEM
       easy_diff
       mongoid (>= 3.0)
     moped (1.5.2)
-    multi_json (1.3.7)
+    multi_json (1.10.1)
     multi_xml (0.5.5)
     oj (2.8.1)
     origin (1.1.0)
@@ -154,7 +166,7 @@ GEM
       celluloid (>= 0.14.1)
       ice_cube (~> 0.11.0)
       sidekiq (>= 2.16.0)
-    simple_oauth (0.1.9)
+    simple_oauth (0.2.0)
     slop (3.5.0)
     sprockets (2.2.2)
       hike (~> 1.2)
@@ -187,12 +199,6 @@ GEM
       coercible (~> 1.0)
       descendants_tracker (~> 0.0.3)
       equalizer (~> 0.0.9)
-    weary (1.1.2)
-      addressable (~> 2.3.2)
-      multi_json (~> 1.3.0)
-      promise (~> 0.3.0)
-      rack (~> 1.4.0)
-      simple_oauth (~> 0.1.5)
     webmock (1.17.4)
       addressable (>= 2.2.7)
       crack (>= 0.3.2)
@@ -220,4 +226,5 @@ DEPENDENCIES
   sidetiq
   trogdir_api
   trogdir_api_client
+  weary!
   webmock
