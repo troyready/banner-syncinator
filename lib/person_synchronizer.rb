@@ -55,6 +55,8 @@ class PersonSynchronizer
       :create
     elsif removed? PERSON_ATTRS
       affiliations = old_affiliations - [affiliation.name]
+      # Empty arrays have problems being posted, so post nil instead
+      affiliations = nil if affiliations.empty?
       person_api :update, affiliations: affiliations
       :destroy
     elsif changed?(PERSON_ATTRS) || old_affiliations.exclude?(affiliation.name)
