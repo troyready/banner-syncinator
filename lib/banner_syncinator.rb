@@ -43,6 +43,8 @@ module BannerSyncinator
       config.secret_key = Settings.trogdir.secret_key
     end
 
+    Weary::Adapter::NetHttpAdvanced.timeout = Settings.trogdir.api_timeout
+
     require './lib/log'
     require './lib/null_person'
     require './lib/person'
