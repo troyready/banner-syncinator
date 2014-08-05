@@ -11,7 +11,9 @@ module Workers
     WORK_HOURS = (8..17).to_a
 
     def initialize
-      raise NotImplementedError, 'Worker::Base must be overridden'
+      if self.class == Workers::Base
+        raise NotImplementedError, 'Worker::Base must be overridden'
+      end
     end
 
     def perform
