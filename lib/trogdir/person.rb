@@ -76,7 +76,7 @@ module Trogdir
     end
 
     def self.find(biola_id)
-      person_hash = Trogdir::Client.call :by_id, id: biola_id, type: :biola_id
+      person_hash = Trogdir::Client.people :by_id, id: biola_id, type: :biola_id
 
       if person_hash.blank?
         NullPerson.new(self)
@@ -86,7 +86,7 @@ module Trogdir
     end
 
     def self.collection
-      person_hashes = Trogdir::Client.call :index, affiliation: affiliation.name
+      person_hashes = Trogdir::Client.people :index, affiliation: affiliation.name
       people = person_hashes.map { |h| new(h) }
 
       PersonCollection.new people
