@@ -53,6 +53,7 @@ module BannerSyncinator
     require './lib/person_collection_comparer'
     require './lib/person_synchronizer'
     require './lib/people_synchronizer'
+    require './lib/group_synchronizer'
     require './lib/banner'
     require './lib/trogdir'
     require './lib/affiliation'
