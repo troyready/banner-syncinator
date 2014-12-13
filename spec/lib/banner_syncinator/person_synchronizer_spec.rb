@@ -10,6 +10,12 @@ describe PersonSynchronizer do
 
   subject { PersonSynchronizer.new(person_change, Affiliation.find(affiliation)) }
 
+  before do
+    %w{person id address email phone}.each do |m|
+      subject.stub("#{m}_api").and_return({})
+    end
+  end
+
   context 'when creating a person' do
     let(:new_attrs) { {FNAME: 'John', LNAME: 'Doe'} }
 
