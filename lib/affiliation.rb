@@ -15,6 +15,18 @@ class Affiliation
     "Trogdir::#{class_name}".constantize
   end
 
+  def hash
+    slug.hash
+  end
+
+  def eql?(other)
+    other.hash == hash
+  end
+
+  def attributes
+    (banner_person::ATTRS + trogdir_person::ATTRS).uniq
+  end
+
   alias :to_s :name
 
   def self.find(class_or_slug_or_name)

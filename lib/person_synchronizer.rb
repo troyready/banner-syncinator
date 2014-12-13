@@ -47,7 +47,7 @@ class PersonSynchronizer
   attr_reader :uuid
 
   def change_person!
-    old_affiliations = old_person.affiliations.map(&:to_s)
+    old_affiliations = Array(old_person.affiliations).map(&:to_s)
 
     if new? PERSON_ATTRS
       hash = person_api :create, person_attributes
@@ -55,10 +55,7 @@ class PersonSynchronizer
       @uuid = hash[:uuid]
       :create
     elsif removed? PERSON_ATTRS
-      affiliations = old_affiliations - [affiliation.name]
-      # Empty arrays have problems being posted, so post nil instead
-      affiliations = nil if affiliations.empty?
-      person_api :update, affiliations: affiliations
+      person_api :update, attrs_for_lost_affiliation
       :destroy
     elsif changed?(PERSON_ATTRS) || old_affiliations.exclude?(affiliation.name)
       person_api :update, person_attributes
@@ -185,5 +182,24 @@ class PersonSynchronizer
 
   def both_respond_to?(attribute)
     old_person.respond_to?(attribute) && new_person.respond_to?(attribute)
+  end
+
+  def attrs_for_lost_affiliation
+    updates = {}
+    old_affiliations = Array(old_person.affiliations)
+    new_affiliations = old_affiliations - [affiliation]
+
+    old_attrs = old_affiliations.map(&:attributes).flatten.uniq
+    new_attrs = new_affiliations.map(&:attributes).flatten.uniq
+
+    # Remove any attributes that no longer apply to this person's affiliations
+    (old_attrs - new_attrs).each do |attr|
+      updates[attr] = nil
+    end
+
+    # Empty arrays have problems being posted, so post nil instead
+    updates[:affiliations] = new_affiliations.empty? ? nil : new_affiliations.map(&:to_s)
+
+    updates
   end
 end
