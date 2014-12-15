@@ -21,7 +21,8 @@ exception_notification:
 
 trogdir:
   scheme: http
-  host: localhost:3000
+  host: localhost
+  port: 3000
   script_name:
   version: v1
   access_id: # set in settings.local.yml
