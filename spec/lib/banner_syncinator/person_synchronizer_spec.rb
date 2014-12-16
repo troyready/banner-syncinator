@@ -51,6 +51,15 @@ describe PersonSynchronizer do
         expect(subject).to receive(:person_api).with(:update, hash_including(mailbox: nil))
         subject.call
       end
+
+      context 'when removing all affiliations' do
+        let(:more_old_attrs) { {affiliations: [Affiliation.find('student')]} }
+
+        it "doesn't remove the global person attributes" do
+          expect(subject).to receive(:person_api).with(:update, hash_excluding(first_name: nil))
+          subject.call
+        end
+      end
     end
 
     context 'when creating an id' do
@@ -143,7 +152,7 @@ describe PersonSynchronizer do
     context 'with an employee affiliation' do
       let(:affiliation) { :employee }
 
-      context 'when creating an phone' do
+      context 'when creating a phone' do
         let(:more_new_attrs) { {DIR_EXT: '42'} }
 
         it 'calls phone_api :create' do
@@ -155,7 +164,7 @@ describe PersonSynchronizer do
       context 'with an existing phone' do
         let(:more_old_attrs) { {phones: [{id: 123, type: 'office', number: '042'}]} }
 
-        context 'when updating an phone' do
+        context 'when updating a phone' do
           let(:more_new_attrs) { {DIR_EXT: '043'} }
 
           it 'calls id_api :update' do
@@ -164,7 +173,7 @@ describe PersonSynchronizer do
           end
         end
 
-        context 'when removing an phone' do
+        context 'when removing a phone' do
           let(:more_new_attrs) { {DIR_EXT: nil} }
 
           it 'calls id_api :destroy' do

@@ -193,7 +193,8 @@ class PersonSynchronizer
     new_attrs = new_affiliations.map(&:attributes).flatten.uniq
 
     # Remove any attributes that no longer apply to this person's affiliations
-    (old_attrs - new_attrs).each do |attr|
+    # but don't remove global Person::ATTRS in case they're losing all affiliations
+    (old_attrs - new_attrs - Person::ATTRS).each do |attr|
       updates[attr] = nil
     end
 
