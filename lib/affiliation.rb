@@ -49,6 +49,10 @@ class Affiliation
     end
   end
 
+  def self.find_all(classes_or_slugs_or_names)
+    Array(classes_or_slugs_or_names).map { |thing| find(thing) }
+  end
+
   private
 
   def class_name

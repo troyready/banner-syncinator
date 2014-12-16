@@ -186,7 +186,7 @@ class PersonSynchronizer
 
   def attrs_for_lost_affiliation
     updates = {}
-    old_affiliations = Array(old_person.affiliations)
+    old_affiliations = Affiliation.find_all(old_person.affiliations)
     new_affiliations = old_affiliations - [affiliation]
 
     old_attrs = old_affiliations.map(&:attributes).flatten.uniq

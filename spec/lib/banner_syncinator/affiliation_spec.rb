@@ -81,4 +81,12 @@ describe Affiliation do
       it { expect(subject.trogdir_person).to eql Trogdir::StudentWorker }
     end
   end
+
+  describe '.find_all' do
+    let(:things) { ['blah', Trogdir::Employee.affiliation, Banner::Trustee, :volunteer, 'student worker'] }
+    subject { Affiliation.find_all(things) }
+
+    it { expect(subject).to be_kind_of Array }
+    it { expect(subject.map{|a| a.try :trogdir_person}).to eql [nil, Trogdir::Employee, Trogdir::Trustee, Trogdir::Volunteer, Trogdir::StudentWorker] }
+  end
 end
