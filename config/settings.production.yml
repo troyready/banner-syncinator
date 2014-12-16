@@ -9,5 +9,6 @@ redis:
 trogdir:
   scheme: https
   host: api.biola.edu
+  port: 443
   script_name: directory
   version: v1
