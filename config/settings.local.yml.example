@@ -1,6 +1,9 @@
 oracle:
   connection_string: "username/******@dbserver.example.com/PROD.example.com"
 
+sentry:
+  url: # Set Me!
+
 trogdir:
   access_id: # set in settings.local.yml
   secret_key: # set in settings.local.yml

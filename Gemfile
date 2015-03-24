@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 gem 'actionpack', '~> 3.2' # apparently needed by exception_notification
 gem 'blazing'
 gem 'biola_deploy'
-gem 'mail'
 gem 'oj'
 gem 'rails_config'
 gem 'rake'
@@ -31,5 +30,5 @@ group :test do
 end
 
 group :production do
-  gem 'exception_notification'
+  gem 'sentry-raven'
 end
