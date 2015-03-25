@@ -3,7 +3,6 @@ module BannerSyncinator
     require 'rails_config'
     require 'sidekiq'
     require 'oj'
-    require 'mail'
     require 'active_support/core_ext'
     require 'trogdir_api_client'
 
