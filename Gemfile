@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gem 'actionpack', '~> 3.2' # apparently needed by exception_notification
 gem 'blazing'
-gem 'biola_deploy'
 gem 'oj'
 gem 'rails_config'
 gem 'rake'

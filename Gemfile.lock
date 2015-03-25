@@ -37,7 +37,6 @@ GEM
       thread_safe (~> 0.3, >= 0.3.1)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    biola_deploy (0.6.1)
     blazing (0.4.1)
       activesupport
       grit
@@ -207,7 +206,6 @@ PLATFORMS
 
 DEPENDENCIES
   actionpack (~> 3.2)
-  biola_deploy
   blazing
   factory_girl
   faker
