@@ -1,4 +1,4 @@
-target :'ruby2.staging', 'johnd0@ruby1.staging.biola.edu:/srv/rack/banner-syncinator', rails_env: 'staging'
+target :'ruby2.staging', 'johnd0@ruby2.staging.biola.edu:/srv/rack/banner-syncinator', rails_env: 'staging'
 target :'ruby1a.prod',    'johnd0@ruby1a.prod.biola.edu:/srv/rack/banner-syncinator',    rails_env: 'production'
 target :'ruby1b.prod',    'johnd0@ruby1b.prod.biola.edu:/srv/rack/banner-syncinator',    rails_env: 'production'
 
