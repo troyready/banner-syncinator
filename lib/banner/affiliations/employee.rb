@@ -3,7 +3,7 @@ module Banner
     SQL_ALL = "SELECT * FROM bpv_current_employees WHERE ecls NOT IN(30,31,33,51,52) AND id NOT LIKE 'X%' AND id NOT LIKE 'Z%'"
     SQL_ONE = "SELECT * FROM bpv_current_employees WHERE ecls NOT IN(30,31,33,51,52) AND id = :1"
 
-    ATTRS = superclass::ATTRS + [:pay_type, :department, :title, :office_phone, :full_time, :employee_type]
+    ATTRS = ATTRS + [:pay_type, :department, :title, :office_phone, :full_time, :employee_type]
 
     default_readers({
       pay_type:       :PAYID,

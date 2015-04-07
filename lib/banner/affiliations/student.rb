@@ -5,7 +5,7 @@ module Banner
     SQL_ALL = "SELECT * FROM bsv_trogdir_student"
     SQL_ONE = "SELECT * FROM bsv_trogdir_student WHERE id = :1"
 
-    ATTRS = superclass::ATTRS + [:majors, :minors, :mailbox]
+    ATTRS = ATTRS + [:majors, :minors, :mailbox]
 
     default_readers({
       mailbox:  :MAILBOX,

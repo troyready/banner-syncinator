@@ -121,7 +121,7 @@ describe PersonSynchronizer do
     end
 
     context 'when creating an email' do
-      let(:more_new_attrs) { {EMAIL: 'john.doe@biola.edu'} }
+      let(:more_new_attrs) { {EMAIL_PERS: 'john.doe@example.com'} }
 
       it 'calls email_api :create' do
         expect(subject).to receive(:email_api).with(:create, kind_of(Hash))
@@ -130,8 +130,8 @@ describe PersonSynchronizer do
     end
 
     context 'when updating an email' do
-      let(:more_old_attrs) { {emails: [{id: 123, type: 'university', address: 'john.doe@biola.edu'}]} }
-      let(:more_new_attrs) { {EMAIL: 'jonny.doe@biola.edu'} }
+      let(:more_old_attrs) { {emails: [{id: 123, type: 'personal', address: 'john.doe@example.com'}]} }
+      let(:more_new_attrs) { {EMAIL_PERS: 'jonny.doe@example.com'} }
 
       it 'calls id_api :update' do
         expect(subject).to receive(:email_api).with(:update, kind_of(Hash))
@@ -140,8 +140,8 @@ describe PersonSynchronizer do
     end
 
     context 'when removing an email' do
-      let(:more_old_attrs) { {emails: [{id: 123, type: 'university', address: 'john.doe@biola.edu'}]} }
-      let(:more_new_attrs) { {EMAIL: nil} }
+      let(:more_old_attrs) { {emails: [{id: 123, type: 'personal', address: 'john.doe@example.com'}]} }
+      let(:more_new_attrs) { {EMAIL_PERS: nil} }
 
       it 'calls id_api :destroy' do
         expect(subject).to receive(:email_api).with(:destroy, kind_of(Hash))
