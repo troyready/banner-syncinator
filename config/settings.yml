@@ -19,3 +19,411 @@ trogdir:
   access_id: # set in settings.local.yml
   secret_key: # set in settings.local.yml
   api_timeout: 300 # 5 min
+
+# building must match bsv_health_center.bh_street1 exactly
+residence:
+  groups:
+    -
+      name: Alpha 1st East
+      building: Alpha East
+      floor: 1
+      wing: east
+    -
+      name: Alpha 1st West
+      building: Alpha West
+      floor: 1
+      wing: west
+    -
+      name: Alpha 2nd East
+      building: Alpha East
+      floor: 2
+      wing: east
+    -
+      name: Alpha 2nd West
+      building: Alpha West
+      floor: 2
+      wing: west
+    -
+      name: Alpha 3rd East
+      building: Alpha East
+      floor: 3
+      wing: east
+    -
+      name: Alpha 3rd West
+      building: Alpha West
+      floor: 3
+      wing: west
+    -
+      name: Beachcomber 1st
+      building: Beachcomber Apartments
+      floor: 1
+    -
+      name: Beachcomber 2nd
+      building: Beachcomber Apartments
+      floor: 2
+    -
+      name: Biola House
+      building: Biola House
+      floor: 1
+    -
+      name: Calpella House 2
+      building: Capella 2
+      floor: 1
+    -
+      name: Calpella House
+      building: Capella House
+      floor: 1
+    -
+      name: Emerson 1st Even
+      building: Emerson
+      floor: 1
+      wing: even
+    -
+      name: Emerson 1st Odd
+      building: Emerson
+      floor: 1
+      wing: odd
+    -
+      name: Emerson 2nd Even
+      building: Emerson
+      floor: 2
+      wing: even
+    -
+      name: Emerson 2nd Odd
+      building: Emerson
+      floor: 2
+      wing: odd
+    -
+      name: Fairvilla House
+      building: Fairvilla House
+      floor: 1
+    -
+      name: Figueras House
+      building: Figueras House
+      floor: 1
+    -
+      name: Gardenhill House
+      building: Gardenhill House
+      floor: 1
+    -
+      name: Hart 1st Even
+      building: Hart
+      floor: 1
+      wing: even
+    -
+      name: Hart 1st Odd
+      building: Hart
+      floor: 1
+      wing: odd
+    -
+      name: Hart 2nd Even
+      building: Hart
+      floor: 2
+      wing: even
+    -
+      name: Hart 2nd Odd
+      building: Hart
+      floor: 2
+      wing: odd
+    -
+      name: Hope 1st North
+      building: Hope North
+      floor: 1
+      wing: north
+    -
+      name: Hope 1st South
+      building: Hope South
+      floor: 1
+      wing: south
+    -
+      name: Hope 2nd North
+      building: Hope North
+      floor: 2
+      wing: north
+    -
+      name: Hope 2nd South
+      building: Hope South
+      floor: 2
+      wing: south
+    -
+      name: Hope 3rd North
+      building: Hope North
+      floor: 3
+      wing: north
+    -
+      name: Hope 3rd South
+      building: Hope South
+      floor: 3
+      wing: south
+    -
+      name: Hope 4th North
+      building: Hope North
+      floor: 4
+      wing: north
+    -
+      name: Hope 4th South
+      building: Hope South
+      floor: 4
+      wing: south
+    -
+      name: Horton 1st North
+      building: Horton North
+      floor: 1
+      wing: north
+    -
+      name: Horton 1st South
+      building: Horton South
+      floor: 1
+      wing: south
+    -
+      name: Horton 2nd North
+      building: Horton North
+      floor: 2
+      wing: north
+    -
+      name: Horton 2nd South
+      building: Horton South
+      floor: 2
+      wing: south
+    -
+      name: Horton 3rd North
+      building: Horton North
+      floor: 3
+      wing: north
+    -
+      name: Horton 3rd South
+      building: Horton South
+      floor: 3
+      wing: south
+    -
+      name: Horton 4th North
+      building: Horton North
+      floor: 4
+      wing: north
+    -
+      name: Horton 4th South
+      building: Horton South
+      floor: 4
+      wing: south
+    -
+      name: Horton 5th North
+      building: Horton North
+      floor: 5
+      wing: north
+    -
+      name: Horton 5th South
+      building: Horton South
+      floor: 5
+      wing: south
+    -
+      name: La Mirada 1st
+      building: La Mirada Apartments
+      floor: 1
+    -
+      name: La Mirada 2nd
+      building: La Mirada Apartments
+      floor: 2
+    -
+      name: Li 1st
+      building: Li Apartments
+      floor: 1
+    -
+      name: Li 2nd
+      building: Li Apartments
+      floor: 2
+    -
+      name: Li 3rd
+      building: Li Apartments
+      floor: 3
+    -
+      name: Lido Mirada 1st
+      building: Lido Mirada Apartments
+      floor: 1
+    -
+      name: Lido Mirada 2nd
+      building: Lido Mirada Apartments
+      floor: 2
+    -
+      name: Philosophy House
+      building: Philosophy House
+      floor: 1
+    -
+      name: Ranch 1st
+      building: Ranch Apartments
+      floor: 1
+    -
+      name: Rosecrans 1 1st
+      building: Rosecrans 1
+      floor: 1
+    -
+      name: Rosecrans 1 2nd
+      building: Rosecrans 1
+      floor: 2
+    -
+      name: Rosecrans 2 1st
+      building: Rosecrans 2
+      floor: 1
+    -
+      name: Rosecrans 2 2nd
+      building: Rosecrans 2
+      floor: 2
+    -
+      name: Rosecrans 3 1st
+      building: Rosecrans 3
+      floor: 1
+    -
+      name: Rosecrans 3 2nd
+      building: Rosecrans 3
+      floor: 2
+    -
+      name: Rosecrans 4 1st
+      building: Rosecrans 4
+      floor: 1
+    -
+      name: Rosecrans 4 2nd
+      building: Rosecrans 4
+      floor: 2
+    -
+      name: Rosecrans 5 1st
+      building: Rosecrans 5
+      floor: 1
+    -
+      name: Rosecrans 5 2nd
+      building: Rosecrans 6
+      floor: 2
+    -
+      name: Sigma 1st Long
+      building: Sigma
+      floor: 1
+      wing: long
+    -
+      name: Sigma 1st Short
+      building: Sigma
+      floor: 1
+      wing: short
+    -
+      name: Sigma 2nd Long
+      building: Sigma
+      floor: 2
+      wing: long
+    -
+      name: Sigma 2nd Short
+      building: Sigma
+      floor: 2
+      wing: short
+    -
+      name: Sigma 3rd Long
+      building: Sigma
+      floor: 3
+      wing: long
+    -
+      name: Sigma 3rd Short
+      building: Sigma
+      floor: 3
+      wing: short
+    -
+      name: Springford House
+      building: Springford House
+      floor: 1
+    -
+      name: Stewart 1st Back Suites
+      building: Stewart
+      floor: 1
+      wing: back_suites
+    -
+      name: Stewart 1st Front Suites
+      building: Stewart
+      floor: 1
+      wing: front_suites
+    -
+      name: Stewart 1st North Quads
+      building: Stewart
+      floor: 1
+      wing: north_quad
+    -
+      name: Stewart 1st South Quads
+      building: Stewart
+      floor: 1
+      wing: south_quad
+    -
+      name: Stewart 2nd Back Suites
+      building: Stewart
+      floor: 2
+      wing: back_suites
+    -
+      name: Stewart 2nd Front Quites
+      building: Stewart
+      floor: 2
+      wing: front_suites
+    -
+      name: Stewart 2nd North Quads
+      building: Stewart
+      floor: 2
+      wing: north_quad
+    -
+      name: Stewart 2nd South Quads
+      building: Stewart
+      floor: 2
+      wing: south_quad
+    -
+      name: Thompson 1st Even
+      building: Thompson
+      floor: 1
+      wing: even
+    -
+      name: Thompson 1st Odd
+      building: Thompson
+      floor: 1
+      wing: odd
+    -
+      name: Thompson 2nd Even
+      building: Thompson
+      floor: 2
+      wing: even
+    -
+      name: Thompson 2nd Odd
+      building: Thompson
+      floor: 2
+      wing: odd
+    -
+      name: Thompson 3rd Even
+      building: Thompson
+      floor: 3
+      wing: even
+    -
+      name: Thompson 3rd Odd
+      building: Thompson
+      floor: 3
+      wing: odd
+    -
+      name: Tradewinds 1st
+      building: Tradewind Apartments
+      floor: 1
+    -
+      name: Tradewinds 2nd
+      building: Tradewind Apartments
+      floor: 2
+    -
+      name: Tropicana 1st
+      building: Tropicana Apartments
+      floor: 1
+    -
+      name: Tropicana 2nd
+      building: Tropicana Apartments
+      floor: 2
+    -
+      name: Welch 1st
+      building: Welch Apartments
+      floor: 1
+    -
+      name: Welch 2nd
+      building: Welch Apartments
+      floor: 2
+    -
+      name: Welch 3rd
+      building: Welch Apartments
+      floor: 3
+    -
+      name: Whiterock House
+      building: Witerock House
+      floor: 1
