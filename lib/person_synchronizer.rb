@@ -18,7 +18,7 @@ class PersonSynchronizer
 
       change_address!
 
-      {university: :university_email, personal: :personal_email}.each do |type, att|
+      {personal: :personal_email}.each do |type, att|
         if both_respond_to? att
           change_email! type, att
         end

@@ -71,12 +71,6 @@ describe Banner::Person do
     it{ expect(person.zip).to eql '12345' }
   end
 
-  describe '#university_email' do
-    let(:params) { {EMAIL: 'coach.z@example.com'} }
-    its(:university_email) { should eql 'coach.z@example.com' }
-    it{ expect(person.university_email).to eql 'coach.z@example.com' }
-  end
-
   describe '#gender' do
     context "when 'M'" do
       let(:params) { {GENDER: 'M'} }

@@ -74,11 +74,6 @@ describe Trogdir::Person do
     its(:country) { should eql 'USA' }
   end
 
-  describe '#university_email' do
-    let(:params) { {emails: [{type: 'university', address: 'coach.z@example.com'}]} }
-    its(:university_email) { should eql 'coach.z@example.com' }
-  end
-
   describe '#personal_email' do
     let(:params) { {emails: [{type: 'personal', address: 'dacoach@example.com'}]} }
     its(:personal_email) { should eql 'dacoach@example.com' }
@@ -143,11 +138,6 @@ describe Trogdir::Person do
   describe '#address_id' do
     let(:params) { {addresses: [{type: 'home', id: 3}]} }
     its(:address_id) { should eql 3 }
-  end
-
-  describe '#university_email_id' do
-    let(:params) { {emails: [{type: 'university', id: 4}]} }
-    its(:university_email_id) { should eql 4 }
   end
 
   describe '#personal_email_id' do

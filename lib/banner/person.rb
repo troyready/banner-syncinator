@@ -10,8 +10,7 @@ module Banner
       street_2:         :STREET2,
       city:             :CITY,
       state:            :STATE,
-      zip:              :ZIP,
-      university_email: :EMAIL
+      zip:              :ZIP
     })
 
     def biola_id
@@ -32,6 +31,7 @@ module Banner
     end
 
     def self.find(biola_id)
+      raise NotImplementedError, 'self::SQL_ONE must be defined' unless defined? self::SQL_ONE
       sql = self::SQL_ONE
       params = {1 => biola_id.to_s.rjust(8, '0')}
 
