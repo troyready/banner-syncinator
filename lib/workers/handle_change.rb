@@ -1,5 +1,6 @@
 module Workers
   class HandleChange
+    class TrogdirAPIError < StandardError; end
     class BannerError < StandardError; end
     include Sidekiq::Worker
 
@@ -15,7 +16,7 @@ module Workers
           person = Trogdir::APIClient::People.new.show(uuid: change.person_uuid).perform.parse
           pidm = person['ids'].find { |id| id['type'] == 'banner' }.try(:[], 'identifier').try(:to_i)
 
-          raise BannerError, "No pidm found for person #{change.person_uuid}" if pidm.blank?
+          raise TrogdirAPIError, "No pidm found for person #{change.person_uuid}" if pidm.blank?
 
           conn = Banner::DB.connection
           cursor = conn.parse 'BEGIN :return_value := BANINST1.BGF_INSERT_GOBTPAC(:pidm); END;'
@@ -32,6 +33,8 @@ module Workers
             conn.exec  "INSERT INTO GORPAUD (GORPAUD_PIDM, GORPAUD_ACTIVITY_DATE, GORPAUD_USER, GORPAUD_EXTERNAL_USER, GORPAUD_CHG_IND)
                         VALUES (:1, SYSDATE, :2, :3, 'I')",
                         pidm, conn.username, change.netid
+          else
+            raise BannerError, "Query failed: #{cursor[':return_value']}"
           end
 
           cursor.close
