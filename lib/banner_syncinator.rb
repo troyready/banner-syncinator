@@ -53,6 +53,7 @@ module BannerSyncinator
     require './lib/group_synchronizer'
     require './lib/banner'
     require './lib/trogdir'
+    require './lib/trogdir_change'
     require './lib/affiliation'
     require './lib/workers'
 
