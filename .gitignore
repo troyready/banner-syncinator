@@ -3,3 +3,5 @@
 /config/blazing.rb
 /vendor/bundle
 /tmp
+/log
+dump.rdb

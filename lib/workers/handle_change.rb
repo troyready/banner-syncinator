@@ -33,6 +33,7 @@ module Workers
             conn.exec  "INSERT INTO GORPAUD (GORPAUD_PIDM, GORPAUD_ACTIVITY_DATE, GORPAUD_USER, GORPAUD_EXTERNAL_USER, GORPAUD_CHG_IND)
                         VALUES (:1, SYSDATE, :2, :3, 'I')",
                         pidm, conn.username, change.netid
+            conn.commit # The inserted row is invisible from other connections unless the transaction is committed.
           else
             raise BannerError, "Query failed: #{cursor[':return_value']}"
           end
