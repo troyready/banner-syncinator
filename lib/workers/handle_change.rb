@@ -45,7 +45,9 @@ module Workers
             Log.info "No pidm found for  #{change.person_uuid}"
             Workers::ChangeFinish.perform_async change.sync_log_id, action
           end
+        end
 
+        if action == :skip
           Log.info "No changes needed for person #{change.person_uuid}" if action == :skip
           Workers::ChangeFinish.perform_async change.sync_log_id, action
         end
