@@ -47,10 +47,8 @@ module Workers
           end
         end
 
-        if action == :skip
-          Log.info "No changes needed for person #{change.person_uuid}"
-          Workers::ChangeFinish.perform_async change.sync_log_id, action
-        end
+        Log.info "No changes needed for person #{change.person_uuid}" if action == :skip
+        Workers::ChangeFinish.perform_async change.sync_log_id, action
       rescue StandardError => err
         Workers::ChangeError.perform_async change.sync_log_id, err.message
         Raven.capture_exception(err) if defined? Raven
