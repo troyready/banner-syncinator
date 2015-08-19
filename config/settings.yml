@@ -12,8 +12,8 @@ sentry:
 
 trogdir:
   scheme: http
-  host: localhost
-  port: 3000
+  host: trogdir-api.dev
+  port:
   script_name:
   version: v1
   access_id: # set in settings.local.yml

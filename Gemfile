@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'actionpack', '~> 3.2' # apparently needed by exception_notification
+gem 'actionpack', '~> 3.2.22' # apparently needed by exception_notification
 gem 'blazing'
 gem 'oj'
 gem 'rails_config'
