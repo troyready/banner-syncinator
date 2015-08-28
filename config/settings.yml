@@ -62,6 +62,42 @@ residence:
       building: Beachcomber Apartments
       floor: 2
     -
+      name: Blackstone 1st East
+      building: Blackstone
+      floor: 1
+    -
+      name: Blackstone 2nd South
+      building: Blackstone
+      floor: 2
+    -
+      name: Blackstone 2nd East
+      building: Blackstone
+      floor: 2
+    -
+      name: Blackstone 3rd South
+      building: Blackstone
+      floor: 3
+    -
+      name: Blackstone 3rd East
+      building: Blackstone
+      floor: 3
+    -
+      name: Blackstone 3rd West
+      building: Blackstone
+      floor: 3
+    -
+      name: Blackstone 4th South
+      building: Blackstone
+      floor: 4
+    -
+      name: Blackstone 4th East
+      bulding: Blackstone
+      floor: 4
+    -
+      name: Blackstone 4th West
+      building: Blackstone
+      floor: 4
+    -
       name: Biola House
       building: Biola House
       floor: 1
