@@ -65,38 +65,47 @@ residence:
       name: Blackstone 1st East
       building: Blackstone
       floor: 1
+      wing: east
     -
       name: Blackstone 2nd South
       building: Blackstone
       floor: 2
+      wing: south
     -
       name: Blackstone 2nd East
       building: Blackstone
       floor: 2
+      wing: east
     -
       name: Blackstone 3rd South
       building: Blackstone
       floor: 3
+      wing: south
     -
       name: Blackstone 3rd East
       building: Blackstone
       floor: 3
+      wing: east
     -
       name: Blackstone 3rd West
       building: Blackstone
       floor: 3
+      wing: west
     -
       name: Blackstone 4th South
       building: Blackstone
       floor: 4
+      wing: south
     -
       name: Blackstone 4th East
       bulding: Blackstone
       floor: 4
+      wing: east
     -
       name: Blackstone 4th West
       building: Blackstone
       floor: 4
+      wing: west
     -
       name: Biola House
       building: Biola House
