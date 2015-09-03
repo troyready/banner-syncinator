@@ -4,7 +4,7 @@ module Workers
       affiliation :alumnus
 
       recurrence do
-        weekly.day(:friday)
+        weekly.day(:monday)
       end
     end
   end
