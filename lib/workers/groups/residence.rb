@@ -5,7 +5,7 @@ module Workers
       include Sidetiq::Schedulable
 
       recurrence do
-        weekly
+        weekly.day_of_week 5
       end
 
       def perform

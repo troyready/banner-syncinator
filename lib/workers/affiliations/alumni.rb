@@ -4,7 +4,7 @@ module Workers
       affiliation :alumnus
 
       recurrence do
-        weekly
+        weekly.day_of_week 5
       end
     end
   end
