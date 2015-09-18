@@ -384,12 +384,12 @@ residence:
       name: Stewart 1st North Quads
       building: Stewart
       floor: 1
-      wing: north_quad
+      wing: north_quads
     -
       name: Stewart 1st South Quads
       building: Stewart
       floor: 1
-      wing: south_quad
+      wing: south_quads
     -
       name: Stewart 2nd Back Suites
       building: Stewart
@@ -404,12 +404,12 @@ residence:
       name: Stewart 2nd North Quads
       building: Stewart
       floor: 2
-      wing: north_quad
+      wing: north_quads
     -
       name: Stewart 2nd South Quads
       building: Stewart
       floor: 2
-      wing: south_quad
+      wing: south_quads
     -
       name: Thompson 1st Even
       building: Thompson
