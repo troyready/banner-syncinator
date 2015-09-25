@@ -6,3 +6,4 @@
 /log
 dump.rdb
 log/*.log
+.gitconfig
