@@ -1,42 +1,42 @@
 ##############################
 ####### Affiliations #########
 ##############################
-accepted_students:
+AcceptedStudents:
   cron: "0 08-17 * * 1-5"
   class: "Workers::Affiliations::AcceptedStudents"
   queue: default
 
-alumni:
+Alumni:
   cron: "* 8 * * 1"
   class: "Workers::Affiliations::Alumni"
   queue: default
 
-employees:
+Employees:
   cron: "0 08-17 * * 1-5"
   class: "Workers::Affiliations::Employees"
   queue: default
 
-faculty:
+Faculty:
   cron: "0 08-17 * * 1-5"
   class: "Workers::Affiliations::Faculty"
   queue: default
 
-student_workers:
+StudentWorkers:
   cron: "0 08-17 * * 1-5"
   class: "Workers::Affiliations::StudentWorkers"
   queue: default
 
-students:
+Students:
   cron: "0 08-20 * * 1-5"
   class: "Workers::Affiliations::Students"
   queue: default
 
-trustees:
+Trustees:
   cron: "0 8 * * *"
   class: "Workers::Affiliations::Trustees"
   queue: default
 
-volunteers:
+Volunteers:
   cron: "0 8 * * *"
   class: "Workers::Affiliations::Volunteers"
   queue: default
@@ -45,17 +45,17 @@ volunteers:
 ########## Groups ############
 ##############################
 
-class_level:
+ClassLevel:
   cron: "0 8 * * *"
   class: "Workers::Groups::ClassLevel"
   queue: default
 
-international:
+International:
   cron: "0 8 * * *"
   class: "Workers::Groups::International"
   queue: default
 
-residence:
+Residence:
   cron: "0 08 * * 1"
   class: "Workers::Groups::Residence"
   queue: default
@@ -64,7 +64,7 @@ residence:
 ########## Changes ###########
 ##############################
 
-handle_changes:
+HandleChanges:
   cron: "0 08-20 * * 1-5"
   class: "Workers::HandleChanges"
   queue: default
