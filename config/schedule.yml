@@ -7,7 +7,7 @@ AcceptedStudents:
   queue: default
 
 Alumni:
-  cron: "* 8 * * 1"
+  cron: "0 8 * * 1"
   class: "Workers::Affiliations::Alumni"
   queue: default
 
