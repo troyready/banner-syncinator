@@ -9,12 +9,12 @@ module Banner
       pay_type:       :PAYID,
       department:     :ORG_DESC,
       title:          :TITLE,
-      office_phone:   :DIR_EXT
+      office_phone:   :DIR_EXT,
+      job_ct:         :JOB_CT
 
       # TODO: Not sure what to do with the commented out columns below
       #employee_type: :EMP_TYPE, # not used (I think)
       #org:           :ORG,
-      #job_ct:        :JOB_CT,
       #job_type:      :JOB_TYPE,
       #fac_type:      :FAC_TYPE,
       #alt_ext:       :ALT_EXT # TODO: create new "alternate office phone" or something type
